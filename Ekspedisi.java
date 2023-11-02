@@ -20,13 +20,10 @@ public class Ekspedisi {
         String[][] dataPenerima = new String[10][6]; // A 2D array to store data of up to 10 recipients with 6 fields
 
         //Variabel Menu Data Pengirim Barang (Case 1 dan Case 3)
-        String namaPengirim, alamatPengirim, kotaPengirim, provinsiPengirim, noTelpPengirim;
-        int kodePosPengirim;
+        String namaPengirim, kotaPengirim, provinsiPengirim;
 
          //Variabel Menu Data Penerima Barang (Case 2 dan Case 3)
-         String namaPenerima, alamatPenerima, kotaPenerima, provinsiPenerima, noTelpPenerima;
-         int kodePosPenerima;
-
+         String namaPenerima, kotaPenerima, provinsiPenerima;
         //Variabel Menu Jenis Pengiriman Barang (Case 3)
         String jenisPengiriman[] = {"Via Darat", "Via Laut", "Via Udara"}; 
         String jenis2 = ""; 
@@ -58,7 +55,9 @@ public class Ekspedisi {
             System.out.println("(3) Menu Pengiriman Barang");
             System.out.println("(4) Tampilkan Data Pengirim Barang");
             System.out.println("(5) Tampilkan Data Pengirim Barang");
-            System.out.println("(6) Exit");
+            System.out.println("(6) Cari Data Pengirim");
+            System.out.println("(7) Cari Data Pengirim");
+            System.out.println("(8) Exit");
 
         
             //Masukkan pilihan menu yang tersedia
@@ -196,7 +195,57 @@ public class Ekspedisi {
                     }
                     break;
 
-                case 6:
+                    case 6:
+                    // Search for sender data
+                    System.out.print("Masukkan Nama Pengirim yang ingin dicari: ");
+                    String searchNameSender = input.nextLine();
+                    boolean foundSender = false;
+
+                    for (int i = 0; i < dataPengirim.length; i++) {
+                        if (dataPengirim[i][0] != null && dataPengirim[i][0].equalsIgnoreCase(searchNameSender)) {
+                            System.out.println("\nData Pengirim Ditemukan:");
+                            System.out.println("Nama Pengirim   : " + dataPengirim[i][0]);
+                            System.out.println("Alamat Pengirim : " + dataPengirim[i][1]);
+                            System.out.println("Kode Pos        : " + dataPengirim[i][2]);
+                            System.out.println("Kota            : " + dataPengirim[i][3]);
+                            System.out.println("Provinsi        : " + dataPengirim[i][4]);
+                            System.out.println("Nomor Telepon   : " + dataPengirim[i][5]);
+                            foundSender = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundSender) {
+                        System.out.println("Data Pengirim Tidak Ditemukan.");
+                    }
+                    break;
+
+                case 7:
+                    // Search for recipient data
+                    System.out.print("Masukkan Nama Penerima yang ingin dicari: ");
+                    String searchNameRecipient = input.nextLine();
+                    boolean foundRecipient = false;
+
+                    for (int i = 0; i < dataPenerima.length; i++) {
+                        if (dataPenerima[i][0] != null && dataPenerima[i][0].equalsIgnoreCase(searchNameRecipient)) {
+                            System.out.println("\nData Penerima Ditemukan:");
+                            System.out.println("Nama Penerima   : " + dataPenerima[i][0]);
+                            System.out.println("Alamat Penerima : " + dataPenerima[i][1]);
+                            System.out.println("Kode Pos        : " + dataPenerima[i][2]);
+                            System.out.println("Kota/Kabupaten  : " + dataPenerima[i][3]);
+                            System.out.println("Provinsi        : " + dataPenerima[i][4]);
+                            System.out.println("Nomor Telepon   : " + dataPenerima[i][5]);
+                            foundRecipient = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundRecipient) {
+                        System.out.println("Data Penerima Tidak Ditemukan.");
+                    }
+                    break;
+
+                case 8:
                     System.out.println("Exit.");
                     break;
 
@@ -204,7 +253,7 @@ public class Ekspedisi {
                     System.out.println("Input yang Anda masukkan salah");
                     System.out.println("Silahkan isi input sesuai pilihan menu yang tersedia");
             }
-        } while (pilihanMenu != 6);
+        } while (pilihanMenu != 8);
         
         input.close();
         
