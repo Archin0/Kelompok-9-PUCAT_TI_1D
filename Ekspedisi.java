@@ -10,7 +10,7 @@ public class Ekspedisi {
         Scanner input = new Scanner(System.in);
 
         String username = "admin"; // Set the username
-        String password = "password"; // Set the password
+        String password = "pass"; // Set the password
         boolean loggedIn = false;
 
         //Deklarasi Variabel
@@ -59,11 +59,16 @@ public class Ekspedisi {
             System.out.println("(7) Cari Data Pengirim");
             System.out.println("(8) Exit");
 
-        
-            //Masukkan pilihan menu yang tersedia
-            System.out.println("\nSilahkan pilih salah satu dari menu di atas");
-            pilihanMenu = Integer.parseInt(input.nextLine());
-
+            // Validasi input untuk pilihan menu
+            do {
+                System.out.print("\nSilahkan pilih salah satu dari menu di atas: ");
+                while (!input.hasNextInt()) {
+                    System.out.println("Input yang Anda masukkan bukan angka. Silakan coba lagi.");
+                    input.next(); 
+                }
+                pilihanMenu = input.nextInt();
+                input.nextLine();
+            } while (pilihanMenu < 1 || pilihanMenu > 8);
         
             switch (pilihanMenu) {
                 case 1:
@@ -71,22 +76,29 @@ public class Ekspedisi {
                     System.out.println("\nSELAMAT DATANG DI DATA PENGIRIM BARANG");
                     System.out.println("--------------------------------------------------------------\n\n");
 
-                    for (int i = 0; i < dataPengirim.length; i++) {
-                        if (dataPengirim[i][0] == null) {
-                            System.out.print("Masukkan Nama Pengirim    : ");
-                            dataPengirim[i][0] = input.nextLine();
-                            System.out.print("Masukkan Alamat Pengirim  : ");
-                            dataPengirim[i][1] = input.nextLine();
-                            System.out.print("Masukkan Kode Pos         : ");
-                            dataPengirim[i][2] = input.nextLine();
-                            System.out.print("Masukkan Kota             : ");
-                            dataPengirim[i][3] = input.nextLine();
-                            System.out.print("Masukkan Provinsi         : ");
-                            dataPengirim[i][4] = input.nextLine();
-                            System.out.print("Masukkan Nomor Telepon    : ");
-                            dataPengirim[i][5] = input.nextLine();
-                            System.out.println("\nDATA BERHASIL DITAMBAHKAN");
-                            break;
+                    // Input the number of senders
+                    System.out.print("Masukkan jumlah pengirim: ");
+                    int jlhPengirim = input.nextInt();
+                    input.nextLine(); // Consume the newline character
+
+                    for (int j = 0; j < jlhPengirim; j++) {
+                        for (int i = 0; i < dataPengirim.length; i++) {
+                            if (dataPengirim[i][0] == null) {
+                                System.out.print("Masukkan Nama Pengirim "+(i+1)+"  : ");
+                                dataPengirim[i][0] = input.nextLine();
+                                System.out.print("Masukkan Alamat Pengirim  : ");
+                                dataPengirim[i][1] = input.nextLine();
+                                System.out.print("Masukkan Kode Pos         : ");
+                                dataPengirim[i][2] = input.nextLine();
+                                System.out.print("Masukkan Kota             : ");
+                                dataPengirim[i][3] = input.nextLine();
+                                System.out.print("Masukkan Provinsi         : ");
+                                dataPengirim[i][4] = input.nextLine();
+                                System.out.print("Masukkan Nomor Telepon    : ");
+                                dataPengirim[i][5] = input.nextLine();
+                                System.out.println("\nDATA BERHASIL DITAMBAHKAN");
+                                break;
+                            }
                         }
                     }
                     break;
@@ -96,22 +108,32 @@ public class Ekspedisi {
                     System.out.println("\nSELAMAT DATANG DI DATA PENERIMA BARANG");
                     System.out.println("--------------------------------------------------------------\n\n");
 
-                    for (int i = 0; i < dataPenerima.length; i++) {
-                        if (dataPenerima[i][0] == null) {
-                            System.out.print("Masukkan Nama Penerima    : ");
-                            dataPenerima[i][0] = input.nextLine();
-                            System.out.print("Masukkan Alamat Penerima  : ");
-                            dataPenerima[i][1] = input.nextLine();
-                            System.out.print("Masukkan Kode Pos         : ");
-                            dataPenerima[i][2] = input.nextLine();
-                            System.out.print("Masukkan Kota/Kabupaten   : ");
-                            dataPenerima[i][3] = input.nextLine();
-                            System.out.print("Masukkan Provinsi         : ");
-                            dataPenerima[i][4] = input.nextLine();
-                            System.out.print("Masukkan Nomor Telepon    : ");
-                            dataPenerima[i][5] = input.nextLine();
-                            System.out.println("\nDATA BERHASIL DITAMBAHKAN");
-                            break;
+                    // System.out.print("Berapa jumlah data penerima yang ingin diisi : ");
+                    // int jlhInputTerima = Integer.parseInt(input.nextLine());
+
+                    // Input the number of recipients
+                    System.out.print("Masukkan jumlah penerima: ");
+                    int jlhPenerima = input.nextInt();
+                    input.nextLine(); // Consume the newline character
+
+                    for (int j = 0; j < jlhPenerima; j++) {
+                        for (int i = 0; i < dataPenerima.length; i++) {
+                            if (dataPenerima[i][0] == null) {
+                                System.out.print("Masukkan Nama Penerima    : ");
+                                dataPenerima[i][0] = input.nextLine();
+                                System.out.print("Masukkan Alamat Penerima  : ");
+                                dataPenerima[i][1] = input.nextLine();
+                                System.out.print("Masukkan Kode Pos         : ");
+                                dataPenerima[i][2] = input.nextLine();
+                                System.out.print("Masukkan Kota/Kabupaten   : ");
+                                dataPenerima[i][3] = input.nextLine();
+                                System.out.print("Masukkan Provinsi         : ");
+                                dataPenerima[i][4] = input.nextLine();
+                                System.out.print("Masukkan Nomor Telepon    : ");
+                                dataPenerima[i][5] = input.nextLine();
+                                System.out.println("\nDATA BERHASIL DITAMBAHKAN");
+                                break;
+                            }
                         }
                     }
                     break;
