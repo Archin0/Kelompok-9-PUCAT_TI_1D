@@ -30,40 +30,47 @@ public class Ekspedisi {
         int beratBarang;
 
 
-        System.out.println("Selamat Datang  di Ekspedisi Pengiriman Barang (PUCAT)\n");
+        System.out.println("\n===============PUCAT EXPRESS================");
+        System.out.println("= Silahkan Verifikasi Anda terlebih dahulu =");
+        System.out.println("============================================");
         
         // Add a login loop
         while (!loggedIn) {
-            System.out.print("Username: ");
+            System.out.print("=\tUsername: ");
             String enteredUsername = input.nextLine();
-            System.out.print("Password: ");
+            System.out.print("=\tPassword: ");
             String enteredPassword = input.nextLine();
 
             if (enteredUsername.equals(username) && enteredPassword.equals(password)) {
-                System.out.println("Login berhasil!");
+                System.out.println("\n=   Berhasil login! Selamat Datang " + enteredUsername + "   =");
+                System.out.println("============================================\n");
                 loggedIn = true;
             } else {
-                System.out.println("Login gagal. Silahkan coba lagi.");
+                System.out.println("\n=     Login gagal. Silahkan coba lagi.     =");
+                System.out.println("============================================\n");
             }
         }
 
         do {
             //Pilihan menu yang akan dipilih
-            System.out.println("--------------------------------------------------");
-            System.out.println("(1) Input Data Pengirim Barang");
-            System.out.println("(2) Input Data Penerima Barang");
-            System.out.println("(3) Menu Pengiriman Barang");
-            System.out.println("(4) Tampilkan Data Pengirim Barang");
-            System.out.println("(5) Tampilkan Data Pengirim Barang");
-            System.out.println("(6) Cari Data Pengirim");
-            System.out.println("(7) Cari Data Pengirim");
-            System.out.println("(8) Exit");
+            System.out.println("=================== MENU ===================");
+            System.out.println("=      (1) Input Data Pengirim Barang      =");
+            System.out.println("=      (2) Input Data Penerima Barang      =");
+            System.out.println("=        (3) Menu Pengiriman Barang        =");
+            System.out.println("=    (4) Tampilkan Data Pengirim Barang    =");
+            System.out.println("=    (5) Tampilkan Data Pengirim Barang    =");
+            System.out.println("=          (6) Cari Data Pengirim          =");
+            System.out.println("=          (7) Cari Data Pengirim          =");
+            System.out.println("=                 (8) Exit                 =");
+            System.out.println("============================================");
 
             // Validasi input untuk pilihan menu
             do {
-                System.out.print("\nSilahkan pilih salah satu dari menu di atas: ");
+                System.out.print("= > Pilih Menu (1/2/3/4/5/6/7/8) : ");
                 while (!input.hasNextInt()) {
-                    System.out.println("Input yang Anda masukkan bukan angka. Silakan coba lagi.");
+                    System.out.println("=   Input yang Anda masukkan bukan angka.   =");
+                    System.out.println("=   Silahkan isi kembali dengan angka       =");
+                    System.out.print("\n= > Pilih Menu (1/2/3/4/5/6/7/8) : ");
                     input.next(); 
                 }
                 pilihanMenu = input.nextInt();
@@ -73,34 +80,36 @@ public class Ekspedisi {
             switch (pilihanMenu) {
                 case 1:
                     //Menu Pengiriman Barang
-                    System.out.println("\nSELAMAT DATANG DI DATA PENGIRIM BARANG");
-                    System.out.println("--------------------------------------------------------------\n\n");
+                    System.out.println("============ Input Data Pengirim ===========");
 
                     // Input the number of senders
-                    System.out.print("Masukkan jumlah pengirim: ");
+                    System.out.print("= > Masukkan jumlah pengirim : ");
                     int jlhPengirim = input.nextInt();
                     input.nextLine(); // Consume the newline character
 
                     for (int j = 0; j < jlhPengirim; j++) {
                         for (int i = 0; i < dataPengirim.length; i++) {
                             if (dataPengirim[i][0] == null) {
-                                System.out.print("Masukkan Nama Pengirim "+(i+1)+"  : ");
+                                System.out.print("= - > Masukkan Nama Pengirim "+(i+1)+"  : ");
                                 dataPengirim[i][0] = input.nextLine();
-                                System.out.print("Masukkan Alamat Pengirim  : ");
+                                System.out.print("= - > Masukkan Alamat Pengirim  : ");
                                 dataPengirim[i][1] = input.nextLine();
-                                System.out.print("Masukkan Kode Pos         : ");
+                                System.out.print("= - > Masukkan Kode Pos         : ");
                                 dataPengirim[i][2] = input.nextLine();
-                                System.out.print("Masukkan Kota             : ");
+                                System.out.print("= - > Masukkan Kota             : ");
                                 dataPengirim[i][3] = input.nextLine();
-                                System.out.print("Masukkan Provinsi         : ");
+                                System.out.print("= - > Masukkan Provinsi         : ");
                                 dataPengirim[i][4] = input.nextLine();
-                                System.out.print("Masukkan Nomor Telepon    : ");
+                                System.out.print("= - > Masukkan Nomor Telepon    : ");
                                 dataPengirim[i][5] = input.nextLine();
-                                System.out.println("\nDATA BERHASIL DITAMBAHKAN");
+                                System.out.println();
                                 break;
                             }
                         }
                     }
+                    System.out.println("=         DATA BERHASIL DITAMBAHKAN        =");
+                    System.out.println("============================================");
+                    System.out.println("=\t\t\t\t\t   =");
                     break;
 
                 case 2:
@@ -213,11 +222,11 @@ public class Ekspedisi {
                             System.out.println("Kota/Kabupaten  : " + dataPenerima[i][3]);
                             System.out.println("Provinsi        : " + dataPenerima[i][4]);
                             System.out.println("Nomor Telepon   : " + dataPenerima[i][5] + "\n");
-                        }
+                      }
                     }
                     break;
 
-                    case 6:
+                case 6:
                     // Search for sender data
                     System.out.print("Masukkan Nama Pengirim yang ingin dicari: ");
                     String searchNameSender = input.nextLine();
@@ -270,14 +279,13 @@ public class Ekspedisi {
                 case 8:
                     System.out.println("Exit.");
                     break;
-
-                default:
+                    
+                    default:
                     System.out.println("Input yang Anda masukkan salah");
                     System.out.println("Silahkan isi input sesuai pilihan menu yang tersedia");
-            }
+                }
         } while (pilihanMenu != 8);
-        
+
         input.close();
-        
     }
 }
