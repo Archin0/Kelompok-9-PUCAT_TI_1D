@@ -27,6 +27,8 @@ public class Ekspedisi {
         //Variabel Menu Jenis Pengiriman Barang (Case 3)
         String jenisPengiriman[] = {"Via Darat ", "Via Laut ", "Via Udara "}; 
         String jenis2 = ""; 
+        int ongkir = 0;
+        int tarifPerKg = 1000;
         int beratBarang;
 
 
@@ -150,7 +152,7 @@ public class Ekspedisi {
                     
                 case 3:
                     //Menu Jenis Pengiriman Barang
-                    System.out.println("============ Jenis Pengiriman ===========");
+                    System.out.println("============= Jenis Pengiriman =============");
                     
                     System.out.print("= > Masukkan Nama Pengirim    : ");
                     namaPengirim = input.nextLine();
@@ -165,7 +167,10 @@ public class Ekspedisi {
                     System.out.print("= > Masukkan Provinsi         : ");
                     provinsiPenerima = input.nextLine();
                     System.out.print("= > Masukkan Berat Barang     : ");
-                    beratBarang = Integer.parseInt(input.nextLine());
+                    beratBarang = input.nextInt();
+                    System.out.print("= > Masukkan nominal uang Anda: ");
+                    int uang = input.nextInt();
+                    input.nextLine();
 
                     System.out.println("=         DATA BERHASIL DITAMBAHKAN        =\n");
                     //List Jenis Pengiriman Barang
@@ -180,20 +185,37 @@ public class Ekspedisi {
                     if (kotaPengirim.equalsIgnoreCase(kotaPenerima) && provinsiPengirim.equalsIgnoreCase(provinsiPenerima)) {
                         if(beratBarang >= 40) {
                             jenis2 = "jenis Full Truck Load / FTL";
+                            ongkir = 4000;
                         } else {
                             jenis2 = "jenis Less Than Load / LTL";
+                            ongkir = 3000;
                         }
+                        int biaya  = ((beratBarang * tarifPerKg) + ongkir);
+                        System.out.println("> Biaya Total        : Rp " + biaya);
+                        int kembalian = uang - biaya;
+                        System.out.println("> Kembalian          : Rp " + kembalian);
                         System.out.println("> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[0]+jenis2);
                     } else if (provinsiPengirim.equalsIgnoreCase(provinsiPenerima)) {
                         if(beratBarang >= 1000 ) {
                             jenis2 = "jenis Full Truck Load / FTL";
+                            ongkir = 7000;
                         } else {
                             jenis2 = "jenis Less Than Load / LTL";
+                            ongkir = 6000;
                         } 
+                        int biaya  = ((beratBarang * tarifPerKg) + ongkir);
+                        System.out.println("> Biaya Total       : Rp " + biaya);
+                        int kembalian = uang - biaya;
+                        System.out.println("> Kembalian          : Rp " + kembalian);
                         System.out.println("> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[1]+jenis2);
                     } else {
+                        ongkir = 10000;
+                        int biaya  = ((beratBarang * tarifPerKg) + ongkir);
+                        System.out.println("> Biaya Total        : Rp " + biaya);
+                        int kembalian = uang - biaya;
+                        System.out.println("> Kembalian          : Rp " + kembalian);
                         System.out.println("> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[2]);
                     }
