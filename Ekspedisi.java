@@ -168,10 +168,6 @@ public class Ekspedisi {
                     provinsiPenerima = input.nextLine();
                     System.out.print("= > Masukkan Berat Barang     : ");
                     beratBarang = input.nextInt();
-                    // System.out.println("Total biaya yang harus dibayar : "+biaya);
-                    // System.out.print("= > Masukkan nominal uang Anda: ");
-                    // int uang = input.nextInt();
-                    // input.nextLine();
 
                     System.out.println("=         DATA BERHASIL DITAMBAHKAN        =\n");
                     //List Jenis Pengiriman Barang
