@@ -92,13 +92,14 @@ public class Ekspedisi {
                     for (int j = 0; j < jlhPengirim; j++) {
                         for (int i = 0; i < dataPengirim.length; i++) {
                             if (dataPengirim[i][0] == null) {
-                                System.out.print("= - > Masukkan Nama Pengirim "+(i+1)+"  : ");
+                                System.out.println("\nInput Pengirim ke " + (i+1) + " : ");
+                                System.out.print("= - > Masukkan Nama Pengirim    : ");
                                 dataPengirim[i][0] = input.nextLine();
                                 System.out.print("= - > Masukkan Alamat Pengirim  : ");
                                 dataPengirim[i][1] = input.nextLine();
                                 System.out.print("= - > Masukkan Kode Pos         : ");
                                 dataPengirim[i][2] = input.nextLine();
-                                System.out.print("= - > Masukkan Kota             : ");
+                                System.out.print("= - > Masukkan Kota / Kabupaten : ");
                                 dataPengirim[i][3] = input.nextLine();
                                 System.out.print("= - > Masukkan Provinsi         : ");
                                 dataPengirim[i][4] = input.nextLine();
@@ -128,6 +129,7 @@ public class Ekspedisi {
                     for (int j = 0; j < jlhPenerima; j++) {
                         for (int i = 0; i < dataPenerima.length; i++) {
                             if (dataPenerima[i][0] == null) {
+                                System.out.println("\nInput Penerima ke " + (i+1) + " : ");
                                 System.out.print("= - > Masukkan Nama Penerima    : ");
                                 dataPenerima[i][0] = input.nextLine();
                                 System.out.print("= - > Masukkan Alamat Penerima  : ");
@@ -156,13 +158,13 @@ public class Ekspedisi {
                     
                     System.out.print("= > Masukkan Nama Pengirim    : ");
                     namaPengirim = input.nextLine();
-                    System.out.print("= > Masukkan Kota             : ");
+                    System.out.print("= > Masukkan Kota / Kabupaten : ");
                     kotaPengirim = input.nextLine();
                     System.out.print("= > Masukkan Provinsi         : ");
                     provinsiPengirim = input.nextLine();
                     System.out.print("= > Masukkan Nama Penerima    : ");
                     namaPenerima = input.nextLine();
-                    System.out.print("= > Masukkan Kota/Kabupaten   : ");
+                    System.out.print("= > Masukkan Kota / Kabupaten : ");
                     kotaPenerima = input.nextLine();
                     System.out.print("= > Masukkan Provinsi         : ");
                     provinsiPenerima = input.nextLine();
@@ -172,12 +174,12 @@ public class Ekspedisi {
                     System.out.println("=         DATA BERHASIL DITAMBAHKAN        =\n");
                     //List Jenis Pengiriman Barang
                     System.out.println("====== #List Jenis Pengiriman Barang# ======");
-                    System.out.println("> Nama Pengirim      : " + namaPengirim);
-                    System.out.println("> Kota Pengirim      : " + kotaPengirim);
-                    System.out.println("> Provinsi Pengirim  : " + provinsiPengirim);
-                    System.out.println("> Nama Penerima      : " + namaPenerima);
-                    System.out.println("> Kota Penerima      : " + kotaPenerima);
-                    System.out.println("> Provinsi Penerima  : " + provinsiPenerima);
+                    System.out.println("> Nama Pengirim             : " + namaPengirim);
+                    System.out.println("> Kota / Kabupaten Pengirim : " + kotaPengirim);
+                    System.out.println("> Provinsi Pengirim         : " + provinsiPengirim);
+                    System.out.println("> Nama Penerima             : " + namaPenerima);
+                    System.out.println("> Kota / Kabupaten Penerima : " + kotaPenerima);
+                    System.out.println("> Provinsi Penerima         : " + provinsiPenerima);
 
                     if (kotaPengirim.equalsIgnoreCase(kotaPenerima) && provinsiPengirim.equalsIgnoreCase(provinsiPenerima)) {
                         if(beratBarang >= 40) {
@@ -195,7 +197,7 @@ public class Ekspedisi {
                         input.nextLine();
                         int kembalian = uang - biaya;
                         System.out.println("> Kembalian          : Rp " + kembalian);
-                        System.out.println("> Pengiriman barang Anda akan dikirim dengan");
+                        System.out.println("\n> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[0]+jenis2);
                     } else if (provinsiPengirim.equalsIgnoreCase(provinsiPenerima)) {
                         if(beratBarang >= 1000 ) {
@@ -213,7 +215,7 @@ public class Ekspedisi {
                         input.nextLine();
                         int kembalian = uang - biaya;
                         System.out.println("> Kembalian          : Rp " + kembalian);
-                        System.out.println("> Pengiriman barang Anda akan dikirim dengan");
+                        System.out.println("\n> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[1]+jenis2);
                     } else {
                         ongkir = 10000;
@@ -225,7 +227,7 @@ public class Ekspedisi {
                         input.nextLine();
                         int kembalian = uang - biaya;
                         System.out.println("> Kembalian          : Rp " + kembalian);
-                        System.out.println("> Pengiriman barang Anda akan dikirim dengan");
+                        System.out.println("\n> Pengiriman barang Anda akan dikirim dengan");
                         System.out.println("  " + jenisPengiriman[2]);
                     }
                     System.out.println("============================================");
@@ -233,34 +235,45 @@ public class Ekspedisi {
                     break;
                 case 4:
                     // Display sender data
+                    boolean displaySender = false;
                     System.out.println("=============== Data Pengirim ==============");
                     for (int i = 0; i < dataPengirim.length; i++) {
                         if (dataPengirim[i][0] != null) {
-                            System.out.println("> Nama Pengirim   : " + dataPengirim[i][0]);
-                            System.out.println("> Alamat Pengirim : " + dataPengirim[i][1]);
-                            System.out.println("> Kode Pos        : " + dataPengirim[i][2]);
-                            System.out.println("> Kota            : " + dataPengirim[i][3]);
-                            System.out.println("> Provinsi        : " + dataPengirim[i][4]);
-                            System.out.println("> Nomor Telepon   : " + dataPengirim[i][5]);
+                            System.out.println("Data ke - " + (i+1) + " : ");
+                            System.out.println("> Nama Pengirim    : " + dataPengirim[i][0]);
+                            System.out.println("> Alamat Pengirim  : " + dataPengirim[i][1]);
+                            System.out.println("> Kode Pos         : " + dataPengirim[i][2]);
+                            System.out.println("> Kota / Kabupaten : " + dataPengirim[i][3]);
+                            System.out.println("> Provinsi         : " + dataPengirim[i][4]);
+                            System.out.println("> Nomor Telepon    : " + dataPengirim[i][5]);
                             System.out.println("");
                         }
+                    }
+                    if (!displaySender) {
+                        System.out.println("\n--------          KOSONG.           --------"); 
+                        System.out.println("------- Anda belum menginputkan data -------");
                     }
                     System.out.println("============================================");
                     break;
 
                 case 5:
                     // Display recipient data
+                    boolean displayReceipt = false;
                     System.out.println("=============== Data Penerima ==============");
                     for (int i = 0; i < dataPenerima.length; i++) {
                         if (dataPenerima[i][0] != null) {
-                            System.out.println("> Nama Penerima   : " + dataPenerima[i][0]);
-                            System.out.println("> Alamat Penerima : " + dataPenerima[i][1]);
-                            System.out.println("> Kode Pos        : " + dataPenerima[i][2]);
-                            System.out.println("> Kota/Kabupaten  : " + dataPenerima[i][3]);
-                            System.out.println("> Provinsi        : " + dataPenerima[i][4]);
-                            System.out.println("> Nomor Telepon   : " + dataPenerima[i][5]);
+                            System.out.println("> Nama Penerima    : " + dataPenerima[i][0]);
+                            System.out.println("> Alamat Penerima  : " + dataPenerima[i][1]);
+                            System.out.println("> Kode Pos         : " + dataPenerima[i][2]);
+                            System.out.println("> Kota / Kabupaten : " + dataPenerima[i][3]);
+                            System.out.println("> Provinsi         : " + dataPenerima[i][4]);
+                            System.out.println("> Nomor Telepon    : " + dataPenerima[i][5]);
                             System.out.println("");
-                      }
+                      } 
+                    }
+                    if (!displayReceipt) {
+                        System.out.println("\n--------          KOSONG.           --------"); 
+                        System.out.println("------- Anda belum menginputkan data -------");
                     }
                     System.out.println("============================================");
                     break;
@@ -275,12 +288,12 @@ public class Ekspedisi {
                     for (int i = 0; i < dataPengirim.length; i++) {
                         if (dataPengirim[i][0] != null && dataPengirim[i][0].equalsIgnoreCase(searchNameSender)) {
                             System.out.println("\n---------- Data Pengirim Ditemukan --------");
-                            System.out.println("> Nama Pengirim   : " + dataPengirim[i][0]);
-                            System.out.println("> Alamat Pengirim : " + dataPengirim[i][1]);
-                            System.out.println("> Kode Pos        : " + dataPengirim[i][2]);
-                            System.out.println("> Kota            : " + dataPengirim[i][3]);
-                            System.out.println("> Provinsi        : " + dataPengirim[i][4]);
-                            System.out.println("> Nomor Telepon   : " + dataPengirim[i][5]);
+                            System.out.println("> Nama Pengirim    : " + dataPengirim[i][0]);
+                            System.out.println("> Alamat Pengirim  : " + dataPengirim[i][1]);
+                            System.out.println("> Kode Pos         : " + dataPengirim[i][2]);
+                            System.out.println("> Kota / Kabupaten : " + dataPengirim[i][3]);
+                            System.out.println("> Provinsi         : " + dataPengirim[i][4]);
+                            System.out.println("> Nomor Telepon    : " + dataPengirim[i][5]);
                             System.out.println("============================================");
                             foundSender = true;
                             break;
@@ -303,12 +316,12 @@ public class Ekspedisi {
                     for (int i = 0; i < dataPenerima.length; i++) {
                         if (dataPenerima[i][0] != null && dataPenerima[i][0].equalsIgnoreCase(searchNameRecipient)) {
                             System.out.println("\n---------- Data Penerima Ditemukan --------");
-                            System.out.println("Nama Penerima   : " + dataPenerima[i][0]);
-                            System.out.println("Alamat Penerima : " + dataPenerima[i][1]);
-                            System.out.println("Kode Pos        : " + dataPenerima[i][2]);
-                            System.out.println("Kota/Kabupaten  : " + dataPenerima[i][3]);
-                            System.out.println("Provinsi        : " + dataPenerima[i][4]);
-                            System.out.println("Nomor Telepon   : " + dataPenerima[i][5]);
+                            System.out.println("Nama Penerima    : " + dataPenerima[i][0]);
+                            System.out.println("Alamat Penerima  : " + dataPenerima[i][1]);
+                            System.out.println("Kode Pos         : " + dataPenerima[i][2]);
+                            System.out.println("Kota / Kabupaten : " + dataPenerima[i][3]);
+                            System.out.println("Provinsi         : " + dataPenerima[i][4]);
+                            System.out.println("Nomor Telepon    : " + dataPenerima[i][5]);
                             System.out.println("============================================");
                             foundRecipient = true;
                             break;
