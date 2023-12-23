@@ -169,6 +169,12 @@ public class Ekspedisi {
                     System.out.print("= > Masukkan Berat Barang     : ");
                     beratBarang = input.nextInt();
 
+
+
+
+
+
+
                     System.out.println("=         DATA BERHASIL DITAMBAHKAN        =\n");
                     //List Jenis Pengiriman Barang
                     System.out.println("====== #List Jenis Pengiriman Barang# ======");
@@ -189,7 +195,6 @@ public class Ekspedisi {
                         }
                         int biaya  = ((beratBarang * tarifPerKg) + ongkir);
                         System.out.println("> Biaya Total        : Rp " + biaya);
-                        System.out.println("============================================");
                         System.out.print("= > Masukkan nominal uang Anda: ");
                         int uang = input.nextInt();
                         input.nextLine();
@@ -207,7 +212,6 @@ public class Ekspedisi {
                         } 
                         int biaya  = ((beratBarang * tarifPerKg) + ongkir);
                         System.out.println("> Biaya Total       : Rp " + biaya);
-                        System.out.println("============================================");
                         System.out.print("= > Masukkan nominal uang Anda: ");
                         int uang = input.nextInt();
                         input.nextLine();
@@ -219,7 +223,6 @@ public class Ekspedisi {
                         ongkir = 10000;
                         int biaya  = ((beratBarang * tarifPerKg) + ongkir);
                         System.out.println("> Biaya Total        : Rp " + biaya);
-                        System.out.println("============================================");
                         System.out.print("= > Masukkan nominal uang Anda: ");
                         int uang = input.nextInt();
                         input.nextLine();
